@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Ulang Tahun!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .header {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            padding: 30px;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .birthday-person {
+            font-size: 2.2rem;
+            font-weight: bold;
+            margin: 15px 0;
+            color: #fff;
+        }
+
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 30px;
+        }
+
+        .photo-section {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .photo-frame {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 8px solid #ff6b6b;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+            position: relative;
+            background: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 4rem;
+            color: #ff6b6b;
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .upload-btn {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .upload-btn:hover {
+            background: #ff5252;
+            transform: translateY(-3px);
+        }
+
+        .message-section {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+        }
+
+        .message {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .message h3 {
+            color: #ff6b6b;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .gift-section {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .gift-box {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(45deg, #ff6b6b, #ff9a76);
+            border-radius: 10px;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .gift-box:hover {
+            transform: scale(1.1);
+        }
+
+        .gift-lid {
+            width: 110px;
+            height: 20px;
+            background: #ff9a76;
+            position: absolute;
+            top: -10px;
+            left: -5px;
+            border-radius: 5px;
+        }
+
+        .gift-bow {
+            width: 20px;
+            height: 40px;
+            background: #4ecdc4;
+            position: absolute;
+            top: 30px;
+            left: 40px;
+            border-radius: 5px;
+        }
+
+        .gift-bow::before, .gift-bow::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 20px;
+            background: #4ecdc4;
+            border-radius: 5px;
+        }
+
+        .gift-bow::before {
+            top: 10px;
+            left: -10px;
+        }
+
+        .gift-bow::after {
+            top: 10px;
+            left: -10px;
+            transform: rotate(90deg);
+        }
+
+        .music-player {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .music-btn {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .music-btn:hover {
+            background: #ff5252;
+            transform: scale(1.1);
+        }
+
+        .balloons {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .balloon {
+            position: absolute;
+            width: 50px;
+            height: 60px;
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+
+        .balloon:nth-child(1) {
+            background: #ff6b6b;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .balloon:nth-child(2) {
+            background: #4ecdc4;
+            left: 20%;
+            animation-delay: 2s;
+        }
+
+        .balloon:nth-child(3) {
+            background: #ffd166;
+            left: 30%;
+            animation-delay: 4s;
+        }
+
+        .balloon:nth-child(4) {
+            background: #ff9a76;
+            left: 40%;
+            animation-delay: 6s;
+        }
+
+        .balloon:nth-child(5) {
+            background: #a0c1b9;
+            left: 60%;
+            animation-delay: 8s;
+        }
+
+        .balloon:nth-child(6) {
+            background: #ff9a9e;
+            left: 80%;
+            animation-delay: 10s;
+        }
+
+        .balloon-string {
+            position: absolute;
+            width: 2px;
+            height: 100px;
+            background: #333;
+            top: 60px;
+            left: 25px;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); }
+            100% { transform: translateY(-100px) rotate(10deg); }
+        }
+
+        .cake {
+            width: 200px;
+            height: 120px;
+            margin: 20px auto;
+            position: relative;
+        }
+
+        .cake-base {
+            width: 180px;
+            height: 60px;
+            background: #ff9a76;
+            border-radius: 10px;
+            position: absolute;
+            bottom: 0;
+            left: 10px;
+        }
+
+        .cake-top {
+            width: 160px;
+            height: 40px;
+            background: #ff6b6b;
+            border-radius: 10px;
+            position: absolute;
+            bottom: 60px;
+            left: 20px;
+        }
+
+        .candle {
+            width: 10px;
+            height: 40px;
+            background: #4ecdc4;
+            position: absolute;
+            bottom: 100px;
+            left: 95px;
+            border-radius: 5px 5px 0 0;
+        }
+
+        .flame {
+            width: 15px;
+            height: 25px;
+            background: #ffd166;
+            border-radius: 50% 50% 20% 20%;
+            position: absolute;
+            bottom: 140px;
+            left: 92.5px;
+            animation: flicker 0.8s infinite alternate;
+        }
+
+        @keyframes flicker {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .birthday-person {
+                font-size: 1.8rem;
+            }
+            
+            .content {
+                flex-direction: column;
+            }
+            
+            .photo-frame {
+                width: 200px;
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="balloons">
+        <div class="balloon"><div class="balloon-string"></div></div>
+        <div class="balloon"><div class="balloon-string"></div></div>
+        <div class="balloon"><div class="balloon-string"></div></div>
+        <div class="balloon"><div class="balloon-string"></div></div>
+        <div class="balloon"><div class="balloon-string"></div></div>
+        <div class="balloon"><div class="balloon-string"></div></div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1>🎉 Selamat Ulang Tahun! 🎉</h1>
+            <div class="birthday-person" id="birthdayName">[Nama Yang Berulang Tahun]</div>
+            
+            <div class="cake">
+                <div class="cake-base"></div>
+                <div class="cake-top"></div>
+                <div class="candle"></div>
+                <div class="flame"></div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="photo-section">
+                <div class="photo-frame" id="photoContainer">
+                    <i class="fas fa-birthday-cake"></i>
+                </div>
+                <button class="upload-btn" onclick="document.getElementById('photoUpload').click()">
+                    <i class="fas fa-upload"></i> Unggah Foto
+                </button>
+                <input type="file" id="photoUpload" accept="image/*" style="display:none" onchange="previewPhoto(event)">
+                
+                <div class="music-player">
+                    <button class="music-btn" id="playBtn" onclick="toggleMusic()">
+                        <i class="fas fa-play"></i>
+                    </button>
+                    <span>Putar Musik Ulang Tahun</span>
+                </div>
+            </div>
+            
+            <div class="message-section">
+                <div class="message">
+                    <h3>Ucapan Spesial </h3>
+                    <!-- <p>Di hari yang istimewa ini, kami ingin mengucapkan:</p> -->
+                    <p><strong>Selamat Ulang Tahun cecee</strong></p>
+                    <p>Semoga panjang umur, sehat selalu, dilimpahkan kebahagiaan, dan sukses dalam segala hal yang cece lakukan!</p>
+                    <p>Teruslah bersinar dan menjadi cece yang berwibawaa</p>
+                </div>
+                
+                <div class="gift-section">
+                    <div class="gift-box" onclick="openGift(1)">
+                        <div class="gift-lid"></div>
+                        <div class="gift-bow"></div>
+                    </div>
+                    <div class="gift-box" onclick="openGift(2)">
+                        <div class="gift-lid"></div>
+                        <div class="gift-bow"></div>
+                    </div>
+                    <div class="gift-box" onclick="openGift(3)">
+                        <div class="gift-lid"></div>
+                        <div class="gift-bow"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <b>Wish u All The Best Ce</b> - From Your Little Brother 
+        </div>
+    </div>
+
+    <!-- Elemen Audio untuk Musik -->
+    <audio id="birthdayMusic" loop>
+        <source src="song/birthdaykoreansong.mp3" type="audio/mpeg">
+        Browser Anda tidak mendukung elemen audio.
+    </audio>
+
+    <script>
+        // Minta nama orang yang berulang tahun
+        window.onload = function() {
+            const name = prompt('Pilih nama yang berulang tahun (ketik 1 atau 2):\n1. Lena ce\n2. Leni ce');
+            if (name === '1') {
+            document.getElementById('birthdayName').textContent = 'Lena Cece';
+            } else if (name === '2') {
+            document.getElementById('birthdayName').textContent = 'Leni Cece';
+            } else {
+            document.getElementById('birthdayName').textContent = 'Lena/Leni';
+            }
+        };
+
+        // Fungsi untuk mengunggah dan menampilkan foto
+        function previewPhoto(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const photoContainer = document.getElementById('photoContainer');
+                    photoContainer.innerHTML = '';
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    photoContainer.appendChild(img);
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Fungsi untuk memutar/menghentikan musik
+        function toggleMusic() {
+            const music = document.getElementById('birthdayMusic');
+            const playBtn = document.getElementById('playBtn');
+            const icon = playBtn.querySelector('i');
+            
+            if (music.paused) {
+                music.play();
+                icon.classList.remove('fa-play');
+                icon.classList.add('fa-pause');
+            } else {
+                music.pause();
+                icon.classList.remove('fa-pause');
+                icon.classList.add('fa-play');
+            }
+        }
+
+        // Fungsi untuk membuka kado
+        function openGift(giftNumber) {
+            const messages = [
+                "🎁 Kado 1: Semoga semua impian dan harapan cece terkabul di tahun ini dan tahun yang akan mendatang <3",
+                "🎁 Kado 2: Kebahagiaan, kesehatan, dan kesuksesan selalu menyertaii!",
+                "🎁 Kado 3: Semoga setiap langkah membawa kebahagiaan dan keberhasilan!"
+            ];
+            
+            alert(messages[giftNumber - 1]);
+            
+            // Tambahkan efek visual sederhana
+            const gift = event.target.closest('.gift-box');
+            gift.style.transform = 'scale(1.2)';
+            gift.style.background = 'linear-gradient(45deg, #4ecdc4, #ffd166)';
+            setTimeout(() => {
+                gift.style.transform = 'scale(1)';
+            }, 500);
+        }
+
+        // Otomatis putar musik setelah interaksi pengguna
+        document.addEventListener('click', function() {
+            const music = document.getElementById('birthdayMusic');
+            if (music.paused) {
+                // Musik akan mulai diputar setelah interaksi pertama
+                music.play().then(() => {
+                    const playBtn = document.getElementById('playBtn');
+                    const icon = playBtn.querySelector('i');
+                    icon.classList.remove('fa-play');
+                    icon.classList.add('fa-pause');
+                }).catch(error => {
+                    console.log("Autoplay prevented:", error);
+                });
+            }
+        }, { once: true });
+    </script>
+</body>
+</html>
